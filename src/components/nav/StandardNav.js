@@ -1,7 +1,7 @@
 // Framework / Utility
-import React from './node_modules/react';
+import React from 'react';
 import s from './StandardNav.module.scss';
-import { Link } from './node_modules/react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Assets
 import logo from '../../assets/logo.png';

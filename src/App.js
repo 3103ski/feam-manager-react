@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 
 // COMPONENETS
 import './App.scss';
-import Navbar from './components/nav/StandardNav';
+import Navbar from './components/Nav/StandardNav';
 
 // Containers
 import Today from './containers/TodaysSchedule/Today';

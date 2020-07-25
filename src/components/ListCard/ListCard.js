@@ -11,6 +11,7 @@ const FlightList = (props) => {
 				<h1>{props.cardTitle}</h1>
 			</div>
 			<div className={s.Divider} />
+			<div className={s.ListWrapper}>{props.children}</div>
 		</div>
 	);
 };
