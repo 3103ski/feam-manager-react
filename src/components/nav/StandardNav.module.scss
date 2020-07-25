@@ -1,0 +1,32 @@
+.NavContainer {
+	width: 100vw;
+	margin: 0 0 40px 0;
+	padding: 0;
+
+	.NavLinks {
+		display: flex;
+		align-items: center;
+		min-width: 800px;
+		width: 70%;
+		background-color: white;
+		border-bottom-right-radius: 25px;
+
+		img {
+			width: 200px;
+			margin: 15px 50px 15px 30px;
+		}
+
+		ul {
+			display: flex;
+			list-style: none;
+
+			li a {
+				text-decoration: none;
+				margin-right: 30px;
+				letter-spacing: 2px;
+				font-weight: bold;
+				color: rgba(30, 30, 33, 0.76);
+			}
+		}
+	}
+}

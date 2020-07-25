@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Layout from './hocs/Layout';
+import Navbar from './components/nav/StandardNav';
+import { Helmet } from 'react-helmet';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<Helmet>
+				<link
+					href='https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap'
+					rel='stylesheet'
+				/>
+			</Helmet>
+			<Layout>
+				<Navbar></Navbar>
+			</Layout>
+		</div>
+	);
 }
 
 export default App;

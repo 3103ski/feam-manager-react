@@ -1,0 +1,15 @@
+.appLayout {
+	width: 100vw;
+	height: 100vh;
+	background: rgb(116, 119, 141);
+	background: linear-gradient(
+		17deg,
+		rgba(116, 119, 141, 0.8869922969187675) 0%,
+		rgba(78, 79, 85, 1) 55%,
+		rgba(64, 64, 64, 1) 100%
+	);
+}
+
+h1 {
+	margin: 0;
+}
