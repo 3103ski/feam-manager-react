@@ -1,0 +1,30 @@
+.ListContainer {
+	width: 100%;
+	min-height: 200px;
+	border-radius: 25px;
+	background-color: white;
+	margin-bottom: 2rem;
+	.TitleContainer {
+		display: flex;
+		align-items: center;
+		padding: 10px 30px;
+
+		img {
+			width: 20px;
+			margin-right: 15px;
+		}
+	}
+	.Divider {
+		width: 100%;
+		height: 2px;
+		margin-bottom: 20px;
+		background: rgb(74, 68, 63);
+		background: linear-gradient(
+			90deg,
+			rgba(74, 68, 63, 1) 12%,
+			rgba(71, 67, 63, 0.9290091036414566) 35%,
+			rgba(69, 66, 63, 0.7469362745098039) 55%,
+			rgba(64, 64, 64, 0) 100%
+		);
+	}
+}

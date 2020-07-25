@@ -1,5 +1,9 @@
-import React from 'react';
+// Framework / Utility
+import React from './node_modules/react';
 import s from './StandardNav.module.scss';
+import { Link } from './node_modules/react-router-dom';
+
+// Assets
 import logo from '../../assets/logo.png';
 
 class StandardNav extends React.Component {
@@ -14,16 +18,16 @@ class StandardNav extends React.Component {
 					<img src={logo} alt='logo' />
 					<ul>
 						<li>
-							<a href='/'>TODAY'S SCHEDULE</a>
+							<Link to='/today'>TODAY'S SCHEDULE</Link>
 						</li>
 						<li>
-							<a href='/'>ALL FLIGHTS</a>
+							<Link to='/flights'>ALL FLIGHTS</Link>
 						</li>
 						<li>
-							<a href='/'>ALL CLIENTS</a>
+							<Link to='/clients'>ALL CLIENTS</Link>
 						</li>
 						<li>
-							<a href='/'>MANAGE STAFF</a>
+							<Link to='/staff'>MANAGE STAFF</Link>
 						</li>
 					</ul>
 				</div>

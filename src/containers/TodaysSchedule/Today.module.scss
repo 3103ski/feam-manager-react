@@ -1,0 +1,12 @@
+.TodayContainer {
+	display: flex;
+	.FlightsCol {
+		width: 65%;
+		min-width: 700px;
+	}
+
+	.StaffCol {
+		width: 35%;
+		padding-left: 2rem;
+	}
+}

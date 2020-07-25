@@ -1,0 +1,18 @@
+// Utility / Framework
+import React from 'react';
+// Styles
+import s from './ListCard.module.scss';
+
+const FlightList = (props) => {
+	return (
+		<div className={s.ListContainer}>
+			<div className={s.TitleContainer}>
+				{props.icon ? <img src={props.icon} alt='calendarIcon' /> : null}
+				<h1>{props.cardTitle}</h1>
+			</div>
+			<div className={s.Divider} />
+		</div>
+	);
+};
+
+export default FlightList;
