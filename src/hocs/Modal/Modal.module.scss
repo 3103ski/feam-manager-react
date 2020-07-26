@@ -1,0 +1,15 @@
+.Modal {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(7, 7, 7, 0.374);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Hide {
+	display: none;
+}
