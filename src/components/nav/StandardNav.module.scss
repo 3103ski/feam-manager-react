@@ -1,5 +1,7 @@
 .NavContainer {
 	width: 100vw;
+	height: 80px;
+	position: fixed;
 	margin: 0;
 	padding: 0;
 
@@ -10,6 +12,7 @@
 		width: 70%;
 		background-color: white;
 		border-bottom-right-radius: 25px;
+		box-shadow: 2px 2px 12px rgba(175, 175, 175, 0.5);
 
 		img {
 			width: 200px;

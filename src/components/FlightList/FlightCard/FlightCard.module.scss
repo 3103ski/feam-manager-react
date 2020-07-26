@@ -8,6 +8,7 @@
 	width: 650px;
 	height: 140px;
 	margin: 0 auto 20px auto;
+	padding: 5px 15px;
 
 	.CardCol {
 		padding: 10px;
@@ -42,6 +43,9 @@
 
 		.CompleteBtn {
 			background-color: #83cd77;
+		}
+		button:hover {
+			cursor: pointer;
 		}
 	}
 }
