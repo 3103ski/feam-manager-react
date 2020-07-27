@@ -14,7 +14,7 @@ const ListToolbar = (props) => {
 				<h2>Add filters later</h2>
 			</div>
 			<div className={s.BtnContainer}>
-				<Button btnFunction='addFlight'>BOOK NEW FLIGHT</Button>
+				<Button btnFunction='toggleAddFlight'>BOOK NEW FLIGHT</Button>
 			</div>
 		</div>
 	);

@@ -15,9 +15,11 @@ import appReducer from './store/reducers/appReducer';
 // Local
 import App from './App';
 import './index.css';
+import flightReducer from './store/reducers/flightReducer';
 
 const rootReducer = combineReducers({
 	app: appReducer,
+	flights: flightReducer,
 });
 
 const logger = (store) => {

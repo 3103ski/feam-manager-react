@@ -1,5 +1,11 @@
+export { toggleModal } from './appReducer';
+
 export {
+	fetchFlightsError,
+	fetchFlightsSuccess,
+	fetchFlightsStart,
+	fetchFlightsInit,
 	toggleIsBookingFlight,
-	modalClose,
 	showMoreFlightInfo,
-} from './appReducer';
+	resetFlightModalContent,
+} from './flightsReducer.js';

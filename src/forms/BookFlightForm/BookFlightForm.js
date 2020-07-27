@@ -51,7 +51,7 @@ class BookFlightForm extends React.Component {
 						)
 					}></TimePicker>
 				<div className={s.ButtonRow}>
-					<Button btnFunction='modalClose'>CANCEL</Button>
+					<Button btnFunction='toggleAddFlight'>CANCEL</Button>
 					<Button specialClass='GreenBtn'>BOOK FLIGHT</Button>
 				</div>
 			</form>

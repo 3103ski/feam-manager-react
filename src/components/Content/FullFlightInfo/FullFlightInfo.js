@@ -80,7 +80,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		closeDetails: () => dispatch(actions.modalClose()),
+		closeDetails: () => dispatch(actions.toggleModal()),
 	};
 };
 

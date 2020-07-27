@@ -28,10 +28,12 @@ import Modal from './components/UI/Modal/Modal';
 class App extends React.Component {
 	render() {
 		let modalContent;
+		const isModal =
+			this.props.appModal || this.props.flightModal ? true : false;
 		if (this.props.isBookingFlight) {
 			modalContent = <FlightForm></FlightForm>;
 		}
-		if (this.props.isViewingFlightInfo) {
+		if (this.props.isViewingFlightInfo && this.props.activeFlight != null) {
 			modalContent = (
 				<FullFlightInfo flight={this.props.activeFlight}></FullFlightInfo>
 			);
@@ -46,7 +48,7 @@ class App extends React.Component {
 					/>
 				</Helmet>
 				<Layout>
-					<Modal showModal={this.props.showModal}>
+					<Modal showModal={isModal}>
 						<ModalCard>{modalContent}</ModalCard>
 					</Modal>
 					<Navbar></Navbar>
@@ -64,10 +66,11 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		isBookingFlight: state.app.isBookingFlight,
-		isViewingFlightInfo: state.app.isViewingFlightInfo,
-		showModal: state.app.modal,
-		activeFlight: state.app.activeFlight,
+		isBookingFlight: state.flights.isBookingFlight,
+		isViewingFlightInfo: state.flights.isViewingFlightInfo,
+		appModal: state.app.modal,
+		flightModal: state.flights.modal,
+		activeFlight: state.flights.activeFlight,
 	};
 };
 

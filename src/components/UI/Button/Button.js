@@ -17,14 +17,14 @@ const Button = (props) => {
 	}
 
 	switch (props.btnFunction) {
-		case 'addFlight':
+		case 'toggleAddFlight':
 			btnFunction = props.toggleIsBookingFlight;
 			break;
 		case 'showMoreFlightInfo':
 			btnFunction = () => props.showMoreFlightInfo(props.flight);
 			break;
 		case 'modalClose':
-			btnFunction = props.modalClose;
+			btnFunction = props.toggleModal;
 			break;
 		default:
 			break;
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		toggleIsBookingFlight: () => dispatch(actions.toggleIsBookingFlight()),
-		modalClose: () => dispatch(actions.modalClose()),
+		toggleModal: () => dispatch(actions.toggleModal()),
 		showMoreFlightInfo: (flight) =>
 			dispatch(actions.showMoreFlightInfo(flight)),
 	};
