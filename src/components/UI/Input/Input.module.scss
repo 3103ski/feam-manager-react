@@ -1,0 +1,20 @@
+.InputContainer {
+	input {
+		height: 25px;
+	}
+	input,
+	textarea {
+		width: 300px;
+		border-radius: 5px;
+		margin: 5px auto;
+		box-sizing: border-box;
+		padding: 10px 15px;
+		border: solid 1px rgba(128, 128, 128, 0.39);
+		&:focus {
+			outline: none;
+			border: solid 2px rgba(255, 166, 0, 0.51);
+			transition: 0.15s;
+			box-shadow: 2px 2px 7px rgba(128, 128, 128, 0.39);
+		}
+	}
+}

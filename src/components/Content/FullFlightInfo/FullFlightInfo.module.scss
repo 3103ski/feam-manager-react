@@ -1,0 +1,14 @@
+.FullInfoContainer {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	.DetailSection {
+		background-color: white;
+		margin: 24px 0;
+		padding: 15px 35px;
+		border-radius: 10px;
+		border-bottom: solid 1px rgba(25, 11, 11, 0.22);
+		box-shadow: 1px 1px 4px rgba(128, 128, 128, 0.41);
+	}
+}

@@ -1,1 +1,5 @@
-export { toggleIsBookingFlight, modalClose } from './appReducer';
+export {
+	toggleIsBookingFlight,
+	modalClose,
+	showMoreFlightInfo,
+} from './appReducer';

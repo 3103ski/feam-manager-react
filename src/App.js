@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 // COMPONENETS
 import './App.scss';
 import Navbar from './components/Nav/StandardNav';
+import ModalCard from './components/UI/Modal/ModalCard/ModalCard';
+import FullFlightInfo from './components/Content/FullFlightInfo/FullFlightInfo';
 
 // FORMS
 import FlightForm from './forms/BookFlightForm/BookFlightForm';
@@ -21,13 +23,18 @@ import Staff from './containers/ManageStaff/ManageStaff';
 // HOCs
 import Layout from './hocs/MainLayout/Layout';
 import ViewLayout from './hocs/ViewLayout/ViewLayout';
-import Modal from './hocs/Modal/Modal';
+import Modal from './components/UI/Modal/Modal';
 
 class App extends React.Component {
 	render() {
 		let modalContent;
 		if (this.props.isBookingFlight) {
 			modalContent = <FlightForm></FlightForm>;
+		}
+		if (this.props.isViewingFlightInfo) {
+			modalContent = (
+				<FullFlightInfo flight={this.props.activeFlight}></FullFlightInfo>
+			);
 		}
 
 		return (
@@ -39,7 +46,9 @@ class App extends React.Component {
 					/>
 				</Helmet>
 				<Layout>
-					<Modal showModal={this.props.showModal}>{modalContent}</Modal>
+					<Modal showModal={this.props.showModal}>
+						<ModalCard>{modalContent}</ModalCard>
+					</Modal>
 					<Navbar></Navbar>
 					<ViewLayout>
 						<Route path='/today' component={Today}></Route>
@@ -56,7 +65,9 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		isBookingFlight: state.app.isBookingFlight,
+		isViewingFlightInfo: state.app.isViewingFlightInfo,
 		showModal: state.app.modal,
+		activeFlight: state.app.activeFlight,
 	};
 };
 

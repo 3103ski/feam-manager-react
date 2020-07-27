@@ -14,10 +14,8 @@ function loadFlights(callback) {
 	xhr.open(method, url);
 	xhr.onload = function () {
 		callback(xhr.response, xhr.status);
-		console.log('This is what we got back: ', xhr.response);
 	};
 	xhr.onerror = function () {
-		console.log(xhr.response);
 		callback(
 			{ message: 'There was an error retrieving flights from the database.' },
 			400
@@ -45,6 +43,7 @@ const FlightList = (props) => {
 				return (
 					<Flight
 						key={index}
+						flight={flight}
 						flightNumber={flight.flightNumber}
 						parking={flight.parking}
 						routing={flight.routing}

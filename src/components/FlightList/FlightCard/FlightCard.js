@@ -1,5 +1,9 @@
+// FRAMEWORK / UTILITY
 import React from 'react';
+// STYLE
 import s from './FlightCard.module.scss';
+// COMPONENTS
+import Button from '../../UI/Button/Button';
 
 const FlightCard = (props) => {
 	return (
@@ -36,9 +40,11 @@ const FlightCard = (props) => {
 			</div>
 			<div className={s.Divider}></div>
 			<div className={(s.CardCol, s.BtnCol)}>
-				<button className={s.CompleteBtn}>COMPLETE SERVICE</button>
-				<button>MORE INFO</button>
-				<button>UPDATE DETAILS</button>
+				<Button specialClass='GreenBtn'>COMPLETE SERVICE</Button>
+				<Button flight={props.flight} btnFunction='showMoreFlightInfo'>
+					MORE INFO
+				</Button>
+				<Button>UPDATE DETAILS</Button>
 			</div>
 		</div>
 	);

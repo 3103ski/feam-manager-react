@@ -1,0 +1,19 @@
+.BtnComponent {
+	color: white;
+	border: none;
+	width: 120px;
+	margin: 5px 5px 5px 10px;
+	height: 25px;
+	border-radius: 5px;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+.Green {
+	background-color: #83cd77 !important;
+}
+
+.Grey {
+	background-color: #bcb9ac;
+}

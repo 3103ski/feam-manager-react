@@ -1,7 +1,7 @@
 // FRAMEWORK / UTILITY
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions/index';
+import * as actions from '../../../store/actions/index';
 
 // STYLES
 import s from './Modal.module.scss';
@@ -14,9 +14,8 @@ const Modal = (props) => {
 		modalClasses = `${s.Modal}`;
 	}
 	return (
-		<div onClick={props.modalClose} className={modalClasses}>
-			{props.children}
-		</div>
+		// <div onClick={props.modalClose} className={modalClasses}>
+		<div className={modalClasses}>{props.children}</div>
 	);
 };
 
