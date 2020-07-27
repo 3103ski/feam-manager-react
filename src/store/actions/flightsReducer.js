@@ -52,9 +52,9 @@ export const toggleIsBookingFlight = () => {
 	};
 };
 
-export const showMoreFlightInfo = (flightInfo) => {
+export const toggleFlightDetails = (flightInfo) => {
 	return {
-		type: actionTypes.SHOW_MORE_FLIGHT_INFO,
+		type: actionTypes.TOGGLE_FLIGHT_DETAILS,
 		flight: flightInfo,
 	};
 };

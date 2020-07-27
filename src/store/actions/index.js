@@ -6,6 +6,6 @@ export {
 	fetchFlightsStart,
 	fetchFlightsInit,
 	toggleIsBookingFlight,
-	showMoreFlightInfo,
+	toggleFlightDetails,
 	resetFlightModalContent,
 } from './flightsReducer.js';

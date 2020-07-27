@@ -29,11 +29,20 @@ const flightReducer = (state = initialState, action) => {
 				});
 			}
 
-		case actionTypes.SHOW_MORE_FLIGHT_INFO:
-			return updateObject(state, {
-				isViewingFlightInfo: true,
-				activeFlight: action.flight,
-			});
+		case actionTypes.TOGGLE_FLIGHT_DETAILS:
+			if (!state.isViewingFlightInfo) {
+				return updateObject(state, {
+					isViewingFlightInfo: true,
+					modal: true,
+					activeFlight: action.flight,
+				});
+			} else {
+				return updateObject(state, {
+					isViewingFlightInfo: false,
+					activeFlight: null,
+					modal: false,
+				});
+			}
 
 		case actionTypes.FETCH_FLIGHTS_START:
 			return updateObject(state, {

@@ -68,7 +68,7 @@ class FullFlightInfo extends Component {
 		return (
 			<div className={s.FullInfoContainer}>
 				{details}
-				<Button btnFunction='modalClose'>CLOSE DETAILS</Button>
+				<Button btnFunction='toggleFlightDetails'>CLOSE DETAILS</Button>
 			</div>
 		);
 	}
@@ -79,9 +79,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {
-		closeDetails: () => dispatch(actions.toggleModal()),
-	};
+	return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FullFlightInfo);

@@ -41,7 +41,7 @@ const FlightCard = (props) => {
 			<div className={s.Divider}></div>
 			<div className={(s.CardCol, s.BtnCol)}>
 				<Button specialClass='GreenBtn'>COMPLETE SERVICE</Button>
-				<Button flight={props.flight} btnFunction='showMoreFlightInfo'>
+				<Button flight={props.flight} btnFunction='toggleFlightDetails'>
 					MORE INFO
 				</Button>
 				<Button>UPDATE DETAILS</Button>

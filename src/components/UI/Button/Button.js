@@ -20,8 +20,8 @@ const Button = (props) => {
 		case 'toggleAddFlight':
 			btnFunction = props.toggleIsBookingFlight;
 			break;
-		case 'showMoreFlightInfo':
-			btnFunction = () => props.showMoreFlightInfo(props.flight);
+		case 'toggleFlightDetails':
+			btnFunction = () => props.toggleFlightDetails(props.flight);
 			break;
 		case 'modalClose':
 			btnFunction = props.toggleModal;
@@ -45,8 +45,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		toggleIsBookingFlight: () => dispatch(actions.toggleIsBookingFlight()),
 		toggleModal: () => dispatch(actions.toggleModal()),
-		showMoreFlightInfo: (flight) =>
-			dispatch(actions.showMoreFlightInfo(flight)),
+		toggleFlightDetails: (flight) =>
+			dispatch(actions.toggleFlightDetails(flight)),
 	};
 };
 
