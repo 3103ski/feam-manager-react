@@ -6,37 +6,61 @@ import s from './FlightCard.module.scss';
 import Button from '../../UI/Button/Button';
 
 const FlightCard = (props) => {
+	let [
+		flightNumber,
+		parking,
+		routing,
+		flightCoordinator,
+		scheduledTOA,
+		scheduledTOD,
+		estimatedTOA,
+		estimatedTOD,
+		actualTOA,
+		actualTOD,
+	] = [
+		props.flightNumber ? props.flightNumber : '----',
+		props.parking ? props.parking : '----',
+		props.routing ? props.routing : '----',
+		props.flightCoordinator ? props.flightCoordinator : 'Not Scheduled',
+		props.scheduledTOA ? props.scheduledTOA : '----',
+		props.scheduledTOD ? props.scheduledTOD : '----',
+		props.estimatedTOA ? props.estimatedTOA : '----',
+		props.estimatedTOD ? props.estimatedTOD : '----',
+		props.actualTOA ? props.actualTOA : '----',
+		props.actualTOD ? props.actualTOD : '----',
+	];
+
 	return (
 		<div className={s.FlightCardContainer}>
 			<div className={s.CardCol}>
-				<h2>Flight#: {props.flightNumber ? props.flightNumber : '----'}</h2>
-				<p>Parking: {props.parking ? props.parking : '----'}</p>
-				<p>Flight Routing: {props.routing ? props.routing : '----'}</p>
+				<h2>Flight#: {flightNumber}</h2>
+				<p>Parking: {parking}</p>
+				<p>Flight Routing: {routing}</p>
 				<p>
-					Flight Coordinator:{' '}
-					{props.flightCoordinator ? props.flightCoordinator : 'Not Scheduled'}
+					Flight Coordinator:
+					{flightCoordinator}
 				</p>
 			</div>
 			<div className={s.Divider}></div>
 			<div className={s.CardCol}>
 				<h2>STA</h2>
-				<p>{props.scheduledTOA ? props.scheduledTOA : '----'}</p>
+				<p>{scheduledTOA}</p>
 				<h2>STD</h2>
-				<p>{props.scheduledTOD ? props.scheduledTOD : '----'}</p>
+				<p>{scheduledTOD}</p>
 			</div>
 			<div className={s.Divider}></div>
 			<div className={s.CardCol}>
 				<h2>ETA</h2>
-				<p>{props.estimatedTOA ? props.estimatedTOA : '----'}</p>
+				<p>{estimatedTOA}</p>
 				<h2>ETD</h2>
-				<p>{props.estimatedTOD ? props.estimatedTOD : '----'}</p>
+				<p>{estimatedTOD}</p>
 			</div>
 			<div className={s.Divider}></div>
 			<div className={s.CardCol}>
 				<h2>ATA</h2>
-				<p>{props.actualTOA ? props.actualTOA : '----'}</p>
+				<p>{actualTOA}</p>
 				<h2>ATD</h2>
-				<p>{props.actualTOD ? props.actualTOD : '----'}</p>
+				<p>{actualTOD}</p>
 			</div>
 			<div className={s.Divider}></div>
 			<div className={(s.CardCol, s.BtnCol)}>

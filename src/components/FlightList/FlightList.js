@@ -1,13 +1,14 @@
+// FRAMEWORK / UTILITY
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
-
-// Components
+// COMPONENTS
 import Flight from './FlightCard/FlightCard';
 
 class FlightList extends React.Component {
 	render() {
 		let flights = <h1>LOADING FLIGHTS...</h1>;
+
 		if (!this.props.flightsLoaded) {
 			this.props.flightsInit();
 		}

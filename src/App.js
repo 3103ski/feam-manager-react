@@ -28,11 +28,14 @@ import Modal from './components/UI/Modal/Modal';
 class App extends React.Component {
 	render() {
 		let modalContent;
+
 		const isModal =
 			this.props.appModal || this.props.flightModal ? true : false;
+
 		if (this.props.isBookingFlight) {
 			modalContent = <FlightForm></FlightForm>;
 		}
+
 		if (this.props.isViewingFlightInfo && this.props.activeFlight != null) {
 			modalContent = (
 				<FullFlightInfo flight={this.props.activeFlight}></FullFlightInfo>

@@ -2,14 +2,18 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../utility/utility';
 
 const initialState = {
+	// Modal Booleans
+	modal: false,
+	isBookingFlight: false,
+	isViewingFlightInfo: false,
+	// Loading
 	isLoadingFlights: false,
 	flightsLoaded: false,
-	modal: false,
+	// Error
 	hasError: false,
 	errorMessage: null,
 	errorStatus: null,
-	isBookingFlight: false,
-	isViewingFlightInfo: false,
+	// Data
 	activeFlight: null,
 	flightList: [],
 };
@@ -62,12 +66,6 @@ const flightReducer = (state = initialState, action) => {
 				hasError: true,
 				errorMessage: action.errorMsg,
 				errorStatus: action.ErrorStatus,
-			});
-
-		case actionTypes.RESET_FLIGHT_MODAL_CONTENT:
-			return updateObject(state, {
-				activeFlight: null,
-				isViewingFlightInfo: false,
 			});
 		default:
 			return state;

@@ -1,21 +1,18 @@
-// Framework / Utility
+// FRAMEWORK / UTILITY
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-
-// Redux
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-
-// Reducers
+// REDUCERS
 import appReducer from './store/reducers/appReducer';
-
-// Local
-import App from './App';
-import './index.css';
 import flightReducer from './store/reducers/flightReducer';
+// LOCAL
+import App from './App';
+// STYLES
+import './index.css';
 
 const rootReducer = combineReducers({
 	app: appReducer,

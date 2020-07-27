@@ -21,7 +21,8 @@ const Button = (props) => {
 			btnFunction = props.toggleIsBookingFlight;
 			break;
 		case 'toggleFlightDetails':
-			btnFunction = () => props.toggleFlightDetails(props.flight);
+			const flight = props.flight;
+			btnFunction = () => props.toggleFlightDetails(flight);
 			break;
 		case 'modalClose':
 			btnFunction = props.toggleModal;

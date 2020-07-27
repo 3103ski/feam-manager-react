@@ -13,7 +13,6 @@ export const fetchFlightsInit = () => {
 		a(axiosOptions)
 			.then((res) => {
 				const flights = res.data;
-				console.log(flights);
 				dispatch(fetchFlightsSuccess(flights));
 			})
 			.catch((err) => {
@@ -56,11 +55,5 @@ export const toggleFlightDetails = (flightInfo) => {
 	return {
 		type: actionTypes.TOGGLE_FLIGHT_DETAILS,
 		flight: flightInfo,
-	};
-};
-
-export const resetFlightModalContent = () => {
-	return {
-		type: actionTypes.RESET_FLIGHT_MODAL_CONTENT,
 	};
 };
