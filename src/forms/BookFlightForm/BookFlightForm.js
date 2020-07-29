@@ -34,7 +34,7 @@ class BookFlightForm extends React.Component {
 				<Input placeHolder='Parking Lot'></Input>
 				<Input placeHolder='Routing'></Input>
 				<Input placeHolder='Service Duration'></Input>
-				<Input placeHolder='Remarks' inputType='textArea'></Input>
+				<Input placeHolder='Remarks' inputTag='textArea'></Input>
 				<p>Select Date</p>
 				<DatePicker
 					selected={this.state.startDate}

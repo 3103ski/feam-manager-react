@@ -14,7 +14,7 @@ const initialState = {
 	errorMessage: null,
 	errorStatus: null,
 	// Data
-	activeFlight: null,
+	currFlight: null,
 	flightList: [],
 };
 
@@ -38,12 +38,12 @@ const flightReducer = (state = initialState, action) => {
 				return updateObject(state, {
 					isViewingFlightInfo: true,
 					modal: true,
-					activeFlight: action.flight,
+					currFlight: action.flight,
 				});
 			} else {
 				return updateObject(state, {
 					isViewingFlightInfo: false,
-					activeFlight: null,
+					currFlight: null,
 					modal: false,
 				});
 			}

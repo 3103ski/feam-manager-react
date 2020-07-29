@@ -1,5 +1,12 @@
-// APP
+// =====================================
+//      APP
+// =====================================
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const CONFIRM_ACTION = 'CONFIRM_ACTION';
+
+// =====================================
+//      FLIGHTS
+// =====================================
 
 // FETCH FLIGHTS
 export const FETCH_FLIGHTS_INIT = 'FETCH_FLIGHTS_INIT';
@@ -10,3 +17,30 @@ export const FETCH_FLIGHTS_SUCESS = 'FETCH_FLIGHTS_SUCESS';
 // FLIGHT MODALS
 export const TOGGLE_IS_BOOKING_FLIGHT = 'TOGGLE_IS_BOOKING_FLIGHT';
 export const TOGGLE_FLIGHT_DETAILS = 'TOGGLE_FLIGHT_DETAILS';
+
+// =====================================
+//      CLIENTS
+// =====================================
+
+// FETCH CLIENTS
+export const FETCH_CLIENTS_INIT = 'FETCH_CLIENTS_INIT';
+export const FETCH_CLIENTS_START = 'FETCH_CLIENTS_START';
+export const FETCH_CLIENTS_SUCCESS = 'FETCH_CLIENTS_SUCCESS';
+export const FETCH_CLIENTS_ERROR = 'FETCH_CLIENTS_ERROR';
+
+// CREATE CLIENT
+export const CREATE_CLIENT_INIT = 'CREATE_CLIENT_INIT';
+export const CREATE_CLIENT_START = 'CREATE_CLIENT_START';
+export const CREATE_CLIENT_SUCCESS = 'CREATE_CLIENT_SUCCESS';
+export const CREATE_CLIENT_ERROR = 'CREATE_CLIENT_ERROR';
+
+// DELETE CLIENT
+export const TOGGLE_IS_DELETING_CLIENT = 'TOGGLE_IS_DELETING_CLIENT';
+export const DELETE_CLIENT_INIT = 'DELETE_CLIENT_INIT';
+export const DELETE_CLIENT_START = 'DELETE_CLIENT_START';
+export const DELETE_CLIENT_SUCCESS = 'DELETE_CLIENT_SUCCESS';
+export const DELETE_CLIENT_ERROR = 'DELETE_CLIENT_ERROR';
+
+// CLIENT MODALS
+export const TOGGLE_IS_CREATING_CLIENT = 'TOGGLE_IS_CREATING_CLIENT';
+export const TOGGLE_CLIENT_DETAILS = 'TOGGLE_CLIENT_DETAILS';

@@ -1,7 +1,7 @@
 // Utility / Framework
 import React from 'react';
 // Styles
-import s from './ListCard.module.scss';
+import s from './DashboardCard.module.scss';
 
 const FlightList = (props) => {
 	return (

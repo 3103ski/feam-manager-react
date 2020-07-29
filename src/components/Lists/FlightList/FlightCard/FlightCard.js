@@ -3,7 +3,7 @@ import React from 'react';
 // STYLE
 import s from './FlightCard.module.scss';
 // COMPONENTS
-import Button from '../../UI/Button/Button';
+import Button from '../../../UI/Button/Button';
 
 const FlightCard = (props) => {
 	let [

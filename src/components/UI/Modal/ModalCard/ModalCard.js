@@ -5,7 +5,7 @@ import s from './ModalCard.module.scss';
 
 const ModalCard = (props) => {
 	return (
-		<div className={s.FormContainer}>
+		<div className={s.ModalCard}>
 			<h1>{props.cardTitle}</h1>
 			{props.children}
 		</div>

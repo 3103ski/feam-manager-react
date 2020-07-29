@@ -4,7 +4,7 @@ import s from './StandardNav.module.scss';
 import { Link } from 'react-router-dom';
 
 // Assets
-import logo from '../../assets/logo.png';
+import logo from '../../../assets/logo.png';
 
 class StandardNav extends React.Component {
 	constructor(props) {

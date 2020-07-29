@@ -1,9 +1,9 @@
 // FRAMEWORK / UTILITY
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions/index';
+import * as actions from '../../../store/actions/index';
 // COMPONENTS
-import Flight from './FlightCard/FlightCard';
+import FlightCard from './FlightCard/FlightCard';
 
 class FlightList extends React.Component {
 	render() {
@@ -16,7 +16,7 @@ class FlightList extends React.Component {
 		if (!this.props.isLoadingFlights) {
 			flights = this.props.flightList ? (
 				this.props.flightList.map((flight, index) => (
-					<Flight
+					<FlightCard
 						key={index}
 						flight={flight}
 						flightNumber={flight.flightNumber}
@@ -28,7 +28,7 @@ class FlightList extends React.Component {
 						estimatedTOA={flight.estimatedTOA}
 						estimatedTOD={flight.estimatedTOD}
 						actualTOA={flight.actualTOA}
-						actualTOD={flight.actualTOD}></Flight>
+						actualTOD={flight.actualTOD}></FlightCard>
 				))
 			) : (
 				<h1>False Load</h1>
@@ -48,9 +48,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchFlightsStart: () => dispatch(actions.fetchFlightsStart()),
-		fetchFlightSuccess: () => dispatch(actions.fetchFlightsSuccess()),
-		fetchFlightError: () => dispatch(actions.fetchFlightsError()),
 		flightsInit: () => dispatch(actions.fetchFlightsInit()),
 	};
 };

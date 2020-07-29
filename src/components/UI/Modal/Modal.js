@@ -13,10 +13,7 @@ const Modal = (props) => {
 	} else {
 		modalClasses = `${s.Modal}`;
 	}
-	return (
-		// <div onClick={props.modalClose} className={modalClasses}>
-		<div className={modalClasses}>{props.children}</div>
-	);
+	return <div className={modalClasses}>{props.children}</div>;
 };
 
 const mapStateToProps = (state) => {

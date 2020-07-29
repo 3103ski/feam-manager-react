@@ -1,10 +1,9 @@
 // Framework / Utility
 import React from 'react';
-// Styles
-import s from './AllFlights.module.scss';
 // Components
-import FlightList from '../../components/FlightList/FlightList';
-import ListToolbar from '../../components/ListToolbar/ListToolBar';
+import FlightList from '../../components/Lists/FlightList/FlightList';
+// HOCs
+import FullListLayout from '../../hocs/FullListLayout/FullListLayout';
 
 class AllFlights extends React.Component {
 	constructor(props) {
@@ -13,12 +12,9 @@ class AllFlights extends React.Component {
 	}
 	render() {
 		return (
-			<div className={s.FlightPageWrapper}>
-				<div className={s.FlightListCol}>
-					<ListToolbar></ListToolbar>
-					<FlightList></FlightList>
-				</div>
-			</div>
+			<FullListLayout listType='flights'>
+				<FlightList></FlightList>
+			</FullListLayout>
 		);
 	}
 }

@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 // REDUCERS
 import appReducer from './store/reducers/appReducer';
 import flightReducer from './store/reducers/flightReducer';
+import clientReducer from './store/reducers/clientsReducer';
 // LOCAL
 import App from './App';
 // STYLES
@@ -17,6 +18,7 @@ import './index.css';
 const rootReducer = combineReducers({
 	app: appReducer,
 	flights: flightReducer,
+	clients: clientReducer,
 });
 
 const logger = (store) => {

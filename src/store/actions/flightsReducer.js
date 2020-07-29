@@ -1,7 +1,9 @@
 import * as actionTypes from './actionTypes';
 import a from 'axios';
 
-// FETCHING FLIGHTS
+// =====================================
+//      FETCHING
+// =====================================
 
 export const fetchFlightsInit = () => {
 	return (dispatch) => {
@@ -43,7 +45,9 @@ export const fetchFlightsError = (errorStatus, errorMsg) => {
 	};
 };
 
-// FLIGHT UTILITY
+// =====================================
+//      MODALS
+// =====================================
 
 export const toggleIsBookingFlight = () => {
 	return {

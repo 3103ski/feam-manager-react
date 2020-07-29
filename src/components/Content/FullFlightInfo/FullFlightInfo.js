@@ -1,5 +1,6 @@
 // FRAMEWORK / UTILITY
 import React from 'react';
+import { connect } from 'react-redux';
 // STYLE
 import s from './FullFlightInfo.module.scss';
 // COMPONENTS
@@ -11,7 +12,7 @@ const FullFlightInfo = (props) => {
 	const ns = 'Not Scheduled';
 	const nt = 'Not Time Selected';
 	const na = 'Detail Not Available';
-	const f = props.flight ? props.flight : null;
+	const f = props.currFlight ? props.currFlight : null;
 	if (f != null) {
 		details = (
 			<div className={s.DetailsContainer}>
@@ -70,4 +71,14 @@ const FullFlightInfo = (props) => {
 	);
 };
 
-export default FullFlightInfo;
+const mapStateToProps = (state) => {
+	return {
+		currFlight: state.flights.currFlight,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FullFlightInfo);

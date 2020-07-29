@@ -7,12 +7,18 @@ import { connect } from 'react-redux';
 
 // COMPONENETS
 import './App.scss';
-import Navbar from './components/Nav/StandardNav';
+import Navbar from './components/UI/Nav/StandardNav';
 import ModalCard from './components/UI/Modal/ModalCard/ModalCard';
+import ConfirmAction from './components/UI/Modal/ConfirmAction/ConfirmAction';
+
+// MODAL DETAILS
 import FullFlightInfo from './components/Content/FullFlightInfo/FullFlightInfo';
+import FullClientInfo from './components/Content/FullClientInfo/FullClientInfo';
 
 // FORMS
 import FlightForm from './forms/BookFlightForm/BookFlightForm';
+import ClientForm from './forms/AddClientForm/AddClientForm';
+// import TestForm from './forms/clientTestAdd';
 
 // Containers
 import Today from './containers/TodaysSchedule/Today';
@@ -24,22 +30,42 @@ import Staff from './containers/ManageStaff/ManageStaff';
 import Layout from './hocs/MainLayout/Layout';
 import ViewLayout from './hocs/ViewLayout/ViewLayout';
 import Modal from './components/UI/Modal/Modal';
-
+import 'antd/dist/antd.css';
 class App extends React.Component {
 	render() {
 		let modalContent;
+		let isModal = false;
 
-		const isModal =
-			this.props.appModal || this.props.flightModal ? true : false;
+		// ===================================
+		// 		MODAL CONTENT
+		// ===================================
 
+		// POSTING FORMS
 		if (this.props.isBookingFlight) {
 			modalContent = <FlightForm></FlightForm>;
+			isModal = true;
 		}
 
-		if (this.props.isViewingFlightInfo && this.props.activeFlight != null) {
-			modalContent = (
-				<FullFlightInfo flight={this.props.activeFlight}></FullFlightInfo>
-			);
+		if (this.props.isAddingClient) {
+			modalContent = <ClientForm></ClientForm>;
+			isModal = true;
+		}
+
+		// DETAILS
+		if (this.props.isViewingFlightInfo) {
+			modalContent = <FullFlightInfo></FullFlightInfo>;
+			isModal = true;
+		}
+
+		if (this.props.isViewingClientInfo) {
+			modalContent = <FullClientInfo></FullClientInfo>;
+			isModal = true;
+		}
+
+		// CONFIRM ACTION
+
+		if (this.props.isDeletingClient) {
+			modalContent = <ConfirmAction confirmType='deleteClient'></ConfirmAction>;
 		}
 
 		return (
@@ -69,11 +95,15 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
+		// FLIGHTS
 		isBookingFlight: state.flights.isBookingFlight,
 		isViewingFlightInfo: state.flights.isViewingFlightInfo,
-		appModal: state.app.modal,
 		flightModal: state.flights.modal,
-		activeFlight: state.flights.activeFlight,
+		// CLIENTS
+		isViewingClientInfo: state.clients.isViewingClientInfo,
+		clientModal: state.clients.modal,
+		isAddingClient: state.clients.isAddingClient,
+		isDeletingClient: state.clients.isDeletingClient,
 	};
 };
 

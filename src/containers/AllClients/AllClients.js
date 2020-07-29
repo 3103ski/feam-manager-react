@@ -1,12 +1,15 @@
+// FRAMEWORK / UTILITY
 import React from 'react';
+// HOCs
+import FullListLayout from '../../hocs/FullListLayout/FullListLayout';
+// COMPONENTS
+import ClientList from '../../components/Lists/ClientList/ClientList';
 
 const Today = (props) => {
 	return (
-		<div>
-			<div>
-				<h1>CREATE PAGE FOR ALL CLIENTS</h1>
-			</div>
-		</div>
+		<FullListLayout listType='clients'>
+			<ClientList></ClientList>
+		</FullListLayout>
 	);
 };
 

@@ -1,0 +1,40 @@
+.ClientListItem {
+	display: flex;
+	align-items: center;
+	width: 90%;
+	background-color: rgba(160, 162, 177, 0.11);
+	box-shadow: 1px 1px 4px rgba(170, 152, 152, 0.55);
+	margin: 0 auto 7px auto;
+	padding: 10px 20px;
+	border-radius: 4px;
+	transition: 0.15s;
+
+	&:hover {
+		cursor: pointer;
+		width: 91%;
+	}
+
+	img {
+		width: 20px;
+		margin-left: 20px;
+	}
+
+	.name {
+		margin-right: auto;
+	}
+	.contact {
+		margin-left: auto;
+		display: flex;
+		align-items: center;
+		border: solid 1px rgb(222, 222, 222);
+		border-radius: 15px;
+		padding: 5px 12px;
+		img {
+			margin: 0 10px 0 0px;
+			width: 15px;
+		}
+		p {
+			margin: 0 2px;
+		}
+	}
+}

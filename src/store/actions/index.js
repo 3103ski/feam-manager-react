@@ -2,9 +2,15 @@ export { toggleModal } from './appReducer';
 
 export {
 	fetchFlightsInit,
-	fetchFlightsStart,
-	fetchFlightsSuccess,
-	fetchFlightsError,
 	toggleIsBookingFlight,
 	toggleFlightDetails,
 } from './flightsReducer.js';
+
+export {
+	fetchClientsInit,
+	toggleClientDetails,
+	toggleIsCreatingClient,
+	createClientInit,
+	deleteClientInit,
+	toggleIsDeletingClient,
+} from './clientsReducer.js';
