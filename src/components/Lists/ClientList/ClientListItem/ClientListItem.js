@@ -19,7 +19,11 @@ const ClientListItem = (props) => {
 				<img src={iconPhone} alt='editIcon' />
 				<p>{c.contactNumber}</p>
 			</div>
-			<img src={iconEdit} alt='editIcon' />
+			<img
+				onClick={() => props.toggleIsUpdatingClient(c)}
+				src={iconEdit}
+				alt='editIcon'
+			/>
 		</div>
 	);
 };
@@ -34,6 +38,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		toggleClientDetails: (client) =>
 			dispatch(actions.toggleClientDetails(client)),
+		toggleIsUpdatingClient: (client) =>
+			dispatch(actions.toggleIsUpdatingClient(client)),
 	};
 };
 

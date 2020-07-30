@@ -40,17 +40,6 @@ class App extends React.Component {
 		// 		MODAL CONTENT
 		// ===================================
 
-		// POSTING FORMS
-		if (this.props.isBookingFlight) {
-			modalContent = <FlightForm></FlightForm>;
-			isModal = true;
-		}
-
-		if (this.props.isAddingClient) {
-			modalContent = <ClientForm></ClientForm>;
-			isModal = true;
-		}
-
 		// DETAILS
 		if (this.props.isViewingFlightInfo) {
 			modalContent = <FullFlightInfo></FullFlightInfo>;
@@ -59,6 +48,19 @@ class App extends React.Component {
 
 		if (this.props.isViewingClientInfo) {
 			modalContent = <FullClientInfo></FullClientInfo>;
+			isModal = true;
+		}
+
+		// POSTING FORMS
+		if (this.props.isBookingFlight) {
+			modalContent = <FlightForm></FlightForm>;
+			isModal = true;
+		}
+
+		if (this.props.isAddingClient || this.props.isEditingClient) {
+			modalContent = (
+				<ClientForm isEditing={this.props.isEditingClient}></ClientForm>
+			);
 			isModal = true;
 		}
 
@@ -104,6 +106,8 @@ const mapStateToProps = (state) => {
 		clientModal: state.clients.modal,
 		isAddingClient: state.clients.isAddingClient,
 		isDeletingClient: state.clients.isDeletingClient,
+		isEditingClient: state.clients.isEditingClient,
+		currClient: state.clients.currClient,
 	};
 };
 

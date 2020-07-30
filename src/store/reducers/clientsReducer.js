@@ -6,6 +6,7 @@ const initialState = {
 	isAddingClient: false,
 	isViewingClientInfo: false,
 	isDeletingClient: false,
+	isEditingClient: false,
 	// Loading
 	isLoadingClients: false,
 	clientsLoaded: false,
@@ -52,6 +53,17 @@ const clientReducer = (state = initialState, action) => {
 		//  CREATING
 		// ----------------
 
+		case actionTypes.TOGGLE_IS_CREATING_CLIENT:
+			if (!state.isAddingClient) {
+				return updateObject(state, {
+					isAddingClient: true,
+				});
+			} else {
+				return updateObject(state, {
+					isAddingClient: false,
+				});
+			}
+
 		case actionTypes.CREATE_CLIENT_START:
 			return updateObject(state, {
 				isMakingRequest: true,
@@ -77,8 +89,63 @@ const clientReducer = (state = initialState, action) => {
 			});
 
 		// ----------------
+		//  UPDATING
+		// ----------------
+
+		case actionTypes.TOGGLE_IS_UPDATING_CLIENT:
+			if (!state.isEditingClient) {
+				return updateObject(state, {
+					isEditingClient: true,
+					isViewingClientInfo: false,
+					currClient: action.client,
+				});
+			} else {
+				return updateObject(state, {
+					isEditingClient: false,
+					isViewingClientInfo: true,
+					currClient: action.client,
+				});
+			}
+
+		case actionTypes.UPDATE_CLIENT_START:
+			return updateObject(state, {
+				isMakingRequest: true,
+			});
+
+		case actionTypes.UPDATE_CLIENT_SUCCESS:
+			return updateObject(state, {
+				isMakingRequest: false,
+				isViewingClientInfo: true,
+				isEditingClient: false,
+				serverStatus: action.status,
+				successStatusText: action.successMsg,
+				currClient: action.updatedClient,
+			});
+
+		case actionTypes.UPDATE_CLIENT_ERROR:
+			return updateObject(state, {
+				hasError: true,
+				isMakingRequest: false,
+				isEditingClient: false,
+				isViewingClientInfo: true,
+				serverStatus: action.status,
+				errorStatusText: action.errorMsg,
+			});
+
+		// ----------------
 		//  DELETING
 		// ----------------
+
+		case actionTypes.TOGGLE_IS_DELETING_CLIENT:
+			if (!state.isDeletingClient) {
+				return updateObject(state, {
+					isDeletingClient: true,
+				});
+			} else {
+				return updateObject(state, {
+					isDeletingClient: false,
+				});
+			}
 
 		case actionTypes.DELETE_CLIENT_START:
 			return updateObject(state, {
@@ -92,6 +159,7 @@ const clientReducer = (state = initialState, action) => {
 				isViewingClientInfo: false,
 				serverStatus: action.status,
 				successStatusText: action.successMsg,
+				currClient: null,
 			});
 
 		case actionTypes.DELETE_CLIENT_ERROR:
@@ -104,32 +172,9 @@ const clientReducer = (state = initialState, action) => {
 			});
 
 		// ----------------
-		//  MODAL TOGGLES
+		//	DETAILS
 		// ----------------
 
-		// CREATE TOGGLE
-		case actionTypes.TOGGLE_IS_CREATING_CLIENT:
-			if (!state.isAddingClient) {
-				return updateObject(state, {
-					isAddingClient: true,
-				});
-			} else {
-				return updateObject(state, {
-					isAddingClient: false,
-				});
-			}
-		// DELETE TOGGLE
-		case actionTypes.TOGGLE_IS_DELETING_CLIENT:
-			if (!state.isDeletingClient) {
-				return updateObject(state, {
-					isDeletingClient: true,
-				});
-			} else {
-				return updateObject(state, {
-					isDeletingClient: false,
-				});
-			}
-		// DETAILS TOGGLE
 		case actionTypes.TOGGLE_CLIENT_DETAILS:
 			if (!state.isViewingClientInfo) {
 				return updateObject(state, {
@@ -139,6 +184,7 @@ const clientReducer = (state = initialState, action) => {
 			} else {
 				return updateObject(state, {
 					isViewingClientInfo: false,
+					isEditingClient: false,
 					currClient: null,
 				});
 			}

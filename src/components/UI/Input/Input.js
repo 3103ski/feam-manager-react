@@ -25,6 +25,7 @@ const Input = (props) => {
 				<textarea
 					rows='10'
 					defaultValue={inputValue}
+					onChange={props.inputOnChange}
 					type={inputType}
 					name={inputName}
 					action={inputAction}

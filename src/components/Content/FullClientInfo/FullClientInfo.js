@@ -7,33 +7,53 @@ import s from './FullClientInfo.module.scss';
 import Button from '../../UI/Button/Button';
 import Detail from '../../UI/LabeledDetail/LabeledDetail';
 
-const FullClientInfo = (props) => {
-	const c = props.currClient ? props.currClient : null;
-	return (
-		<div className={s.ClientDetailsContainer}>
-			<Detail specialClass={s.ClientDetail} label='Name'>
-				{c.name}
-			</Detail>
-			<Detail specialClass={s.ClientDetail} label='Client Notes'>
-				{c.clientNotes}
-			</Detail>
-			<Detail specialClass={s.ClientDetail} label='Contact #'>
-				{c.contactNumber}
-			</Detail>
-			<Detail specialClass={s.ClientDetail} label='Last Modified'>
-				{c.lastModified}
-			</Detail>
-			<Button btnFunction='toggleClientDetails'>CLOSE DETAILS</Button>
-			<Button btnFunction='toggleIsDeletingClient' specialClass='RedBtn'>
-				DELETE CLIENT
+class FullClientInfo extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			clientInfo: this.props.currClient ? this.props.currClient : null,
+		};
+	}
+	render() {
+		const c = this.state.clientInfo;
+		const editBtn = !this.props.isEditing ? (
+			<Button
+				client={this.state.clientInfo}
+				btnFunction='toggleIsUpdatingClient'>
+				EDIT
 			</Button>
-		</div>
-	);
-};
+		) : null;
+		return (
+			<div className={s.ClientDetailsContainer}>
+				<Detail specialClass={s.ClientDetail} label='Name'>
+					{c.name}
+				</Detail>
+				<Detail specialClass={s.ClientDetail} label='Client Notes'>
+					{c.clientNotes}
+				</Detail>
+				<Detail specialClass={s.ClientDetail} label='Contact #'>
+					{c.contactNumber}
+				</Detail>
+				<Detail specialClass={s.ClientDetail} label='Address'>
+					{c.address}
+				</Detail>
+				<Detail specialClass={s.ClientDetail} label='Last Modified'>
+					{c.lastModified}
+				</Detail>
+				<Button btnFunction='toggleClientDetails'>CLOSE DETAILS</Button>
+				{editBtn}
+				<Button btnFunction='toggleIsDeletingClient' specialClass='RedBtn'>
+					DELETE CLIENT
+				</Button>
+			</div>
+		);
+	}
+}
 
 const mapStateToProps = (state) => {
 	return {
 		currClient: state.clients.currClient,
+		isEditing: state.clients.isEditingClient,
 	};
 };
 

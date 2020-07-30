@@ -41,6 +41,9 @@ const Button = (props) => {
 		case 'toggleIsDeletingClient':
 			btnFunction = () => props.toggleIsDeletingClient();
 			break;
+		case 'toggleIsUpdatingClient':
+			btnFunction = () => props.toggleIsUpdatingClient(props.client);
+			break;
 		case 'deleteClient':
 			const clientId = props.currClient.id;
 			btnFunction = () => props.deleteClient(clientId);
@@ -85,6 +88,8 @@ const mapDispatchToProps = (dispatch) => {
 		createClient: (fd) => dispatch(actions.createClientInit(fd)),
 		deleteClient: (clientId) => dispatch(actions.deleteClientInit(clientId)),
 		toggleIsDeletingClient: () => dispatch(actions.toggleIsDeletingClient()),
+		toggleIsUpdatingClient: (currClient) =>
+			dispatch(actions.toggleIsUpdatingClient(currClient)),
 	};
 };
 

@@ -14,13 +14,17 @@ class ClientList extends React.Component {
 		}
 
 		if (!this.props.isLoadingClients) {
-			clients = this.props.clientList ? (
-				this.props.clientList.map((client, index) => {
-					return <ClientListItem key={index} client={client}></ClientListItem>;
-				})
-			) : (
-				<h1>False Load</h1>
-			);
+			const clientList = this.props.clientList;
+			clients =
+				clientList && clientList.length > 0 ? (
+					this.props.clientList.map((client, index) => {
+						return (
+							<ClientListItem key={index} client={client}></ClientListItem>
+						);
+					})
+				) : (
+					<h1>Click 'create new' above to get adding clients!</h1>
+				);
 		}
 		return <div>{clients}</div>;
 	}

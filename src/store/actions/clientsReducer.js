@@ -26,7 +26,6 @@ export const fetchClientsStart = () => {
 };
 
 export const fetchClientsSuccess = (response) => {
-	console.log(response);
 	return {
 		type: actionTypes.FETCH_CLIENTS_SUCCESS,
 		clients: response.data,
@@ -47,10 +46,16 @@ export const fetchClientsError = (response) => {
 //      CREATING
 // =====================================
 
-export const createClientInit = (formContent) => {
+export const toggleIsCreatingClient = () => {
+	return {
+		type: actionTypes.TOGGLE_IS_CREATING_CLIENT,
+	};
+};
+
+export const createClientInit = (newClientData) => {
 	return (dispatch) => {
 		dispatch(createClientStart());
-		a.post('http://127.0.0.1:8000/api/clients/', formContent)
+		a.post('http://127.0.0.1:8000/api/clients/', newClientData)
 			.then((res) => {
 				dispatch(createClientSuccess(res));
 				dispatch(fetchClientsInit());
@@ -84,17 +89,73 @@ export const createClientError = (error) => {
 };
 
 // =====================================
+//      UPDATING
+// =====================================
+
+export const toggleIsUpdatingClient = (client) => {
+	return {
+		type: actionTypes.TOGGLE_IS_UPDATING_CLIENT,
+		client: client,
+	};
+};
+
+export const updateClientInit = (updatedClient, clientID) => {
+	console.log('this is updated client info: ', updatedClient);
+	console.log('this should be the id: ', clientID);
+	let updateURL = `http://127.0.0.1:8000/api/clients/${clientID}/`;
+	return (dispatch) => {
+		dispatch(updateClientStart());
+		a.put(updateURL, updatedClient)
+			.then((response) => {
+				console.log(response);
+				dispatch(updateClientSuccess(response));
+				dispatch(fetchClientsInit());
+			})
+			.catch((error) => {
+				dispatch(updateClientError(error));
+			});
+	};
+};
+
+export const updateClientStart = () => {
+	return {
+		type: actionTypes.UPDATE_CLIENT_START,
+	};
+};
+
+export const updateClientSuccess = (response) => {
+	return {
+		type: actionTypes.UPDATE_CLIENT_SUCCESS,
+		status: response.status,
+		successMsg: response.statusText,
+		updatedClient: response.data,
+	};
+};
+
+export const updateClientError = (response) => {
+	return {
+		type: actionTypes.UPDATE_CLIENT_ERROR,
+		status: response.status,
+		errorMsg: response.statusText,
+	};
+};
+
+// =====================================
 //      DELETING
 // =====================================
 
+export const toggleIsDeletingClient = () => {
+	return {
+		type: actionTypes.TOGGLE_IS_DELETING_CLIENT,
+	};
+};
+
 export const deleteClientInit = (clientId) => {
-	console.log(clientId);
 	let deleteURL = `http://127.0.0.1:8000/api/clients/${clientId}`;
 	return (dispatch) => {
 		dispatch(deleteClientStart());
 		a.delete(deleteURL)
 			.then((res) => {
-				console.log('we deleted successfully: ', res);
 				dispatch(deleteClientSuccess(res));
 				dispatch(fetchClientsInit());
 			})
@@ -126,20 +187,9 @@ export const deleteClientError = (response) => {
 	};
 };
 
-export const toggleIsDeletingClient = () => {
-	return {
-		type: actionTypes.TOGGLE_IS_DELETING_CLIENT,
-	};
-};
-
 // =====================================
-//      MODALS
+//      DETAILS
 // =====================================
-export const toggleIsCreatingClient = () => {
-	return {
-		type: actionTypes.TOGGLE_IS_CREATING_CLIENT,
-	};
-};
 
 export const toggleClientDetails = (clientInfo) => {
 	return {

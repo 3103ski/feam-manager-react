@@ -12,5 +12,7 @@ export {
 	toggleIsCreatingClient,
 	createClientInit,
 	deleteClientInit,
+	updateClientInit,
 	toggleIsDeletingClient,
+	toggleIsUpdatingClient,
 } from './clientsReducer.js';

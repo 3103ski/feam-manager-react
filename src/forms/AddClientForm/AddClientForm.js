@@ -19,10 +19,14 @@ class AddClientForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: '',
-			contactNumber: '',
-			clientNotes: '',
-			address: '',
+			name: this.props.isEditing ? this.props.currClient.name : '',
+			contactNumber: this.props.isEditing
+				? this.props.currClient.contactNumber
+				: '',
+			clientNotes: this.props.isEditing
+				? this.props.currClient.clientNotes
+				: '',
+			address: this.props.isEditing ? this.props.currClient.address : '',
 		};
 	}
 
@@ -65,16 +69,23 @@ class AddClientForm extends React.Component {
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		const data = this.state;
-		this.props.postForm(data);
+		if (this.props.isEditing) {
+			const id = this.props.currClient.id;
+			this.props.putForm(data, id);
+		} else {
+			this.props.postForm(data);
+		}
 	};
 
 	render() {
+		const clientData = this.props.currClient ? this.props.currClient : null;
+		const edit = this.props.isEditing;
+		const cancelBtnFunction = edit
+			? 'toggleIsUpdatingClient'
+			: 'toggleAddClient';
+
 		return (
-			<form
-				onSubmit={this.handleFormSubmit}
-				className='form'
-				method='POST'
-				action='http://localhost:8000/api/clients/'>
+			<form onSubmit={this.handleFormSubmit} className='form'>
 				<Input
 					inputType='hidden'
 					inputValue='/clients'
@@ -84,26 +95,33 @@ class AddClientForm extends React.Component {
 					inputOnChange={this.handleNameOnChange}
 					inputType='text'
 					inputName='name'
+					inputValue={edit ? clientData.name : ''}
 					inputPlaceholder='Name'></Input>
 				<Input
 					inputType='text'
 					inputName='contactNumber'
+					inputValue={edit ? clientData.contactNumber : ''}
 					inputOnChange={this.handleContactNumberOnChange}
 					inputPlaceholder='Contact Number'></Input>
 				<Input
 					inputName='clientNotes'
+					inputType='text'
+					inputValue={edit ? clientData.clientNotes : ''}
 					inputOnChange={this.handleClientNotesOnChange}
 					inputPlaceholder='Client Notes'
 					inputTag='textArea'></Input>
 				<Input
 					inputType='text'
 					inputOnChange={this.handleAddressOnChange}
+					inputValue={edit ? clientData.address : ''}
 					inputPlaceholder='Address'
 					inputName='address'></Input>
 				<div className={s.ButtonRow}>
-					<Button btnFunction='toggleAddClient'>CANCEL</Button>
+					<Button client={clientData} btnFunction={cancelBtnFunction}>
+						CANCEL
+					</Button>
 					<Button btnType='submit' specialClass='GreenBtn'>
-						ADD CLIENT
+						{this.props.isEditing ? 'UPDATE CLIENT' : 'ADD CLIENT'}
 					</Button>
 				</div>
 			</form>
@@ -112,12 +130,16 @@ class AddClientForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	return {};
+	return {
+		currClient: state.clients.currClient,
+		isEditing: state.clients.isEditingClient,
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		postForm: (data) => dispatch(actions.createClientInit(data)),
+		putForm: (data, id) => dispatch(actions.updateClientInit(data, id)),
 	};
 };
 
