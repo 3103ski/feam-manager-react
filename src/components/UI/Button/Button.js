@@ -6,7 +6,11 @@ import * as actions from '../../../store/actions/index';
 import s from './Button.module.scss';
 
 const Button = (props) => {
-	let btnClasses, btnFunction, btnType;
+	let btnClasses, btnFunction, btnType, flight;
+
+	// ***** =========== *****
+	//     BUTTON COLORS
+	// ***** =========== *****
 
 	switch (props.specialClass) {
 		case 'GreenBtn':
@@ -19,16 +23,28 @@ const Button = (props) => {
 			btnClasses = `${s.Grey} ${s.BtnComponent}`;
 	}
 
-	switch (props.btnFunction) {
-		case 'toggleAddFlight':
-			btnFunction = props.toggleIsBookingFlight;
+	// ***** =========== *****
+	//     BUTTON TYPES
+	// ***** =========== *****
+
+	switch (props.btnType) {
+		case 'submit':
+			btnType = 'submit';
 			break;
+		default:
+			btnType = '';
+			break;
+	}
+
+	// ***** =========== *****
+	//     BUTTON FUNCTIONS
+	// ***** =========== *****
+
+	switch (props.btnFunction) {
+		// -------------
+		//   CLIENTS
 		case 'toggleAddClient':
 			btnFunction = props.toggleAddClient;
-			break;
-		case 'toggleFlightDetails':
-			const flight = props.flight;
-			btnFunction = () => props.toggleFlightDetails(flight);
 			break;
 		case 'toggleClientDetails':
 			const client = props.client;
@@ -48,19 +64,25 @@ const Button = (props) => {
 			const clientId = props.currClient.id;
 			btnFunction = () => props.deleteClient(clientId);
 			break;
+		// -----------
+		//   FLIGHTS
+		case 'toggleAddFlight':
+			btnFunction = props.toggleIsBookingFlight;
+			break;
+		case 'toggleFlightDetails':
+			flight = props.flight;
+			btnFunction = () => props.toggleFlightDetails(flight);
+			break;
+		case 'toggleIsUpdatingFlightFromList':
+			flight = props.flight;
+			btnFunction = () => props.toggleIsUpdatingFlightFromList(flight);
+			break;
+		// ------------------
+		//   APP FUNCTIONS
 		case 'modalClose':
 			btnFunction = props.toggleModal;
 			break;
 		default:
-			break;
-	}
-
-	switch (props.btnType) {
-		case 'submit':
-			btnType = 'submit';
-			break;
-		default:
-			btnType = '';
 			break;
 	}
 
@@ -74,22 +96,28 @@ const Button = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		currClient: state.clients.currClient,
+		currFlight: state.flights.currFlight,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		toggleIsBookingFlight: () => dispatch(actions.toggleIsBookingFlight()),
-		toggleAddClient: () => dispatch(actions.toggleIsCreatingClient()),
+		// APP FUNCTIONS
 		toggleModal: () => dispatch(actions.toggleModal()),
+		// FLIGHTS
+		toggleIsBookingFlight: () => dispatch(actions.toggleIsBookingFlight()),
 		toggleFlightDetails: (flight) =>
 			dispatch(actions.toggleFlightDetails(flight)),
-		toggleClientDetails: () => dispatch(actions.toggleClientDetails()),
-		createClient: (fd) => dispatch(actions.createClientInit(fd)),
-		deleteClient: (clientId) => dispatch(actions.deleteClientInit(clientId)),
+		toggleIsUpdatingFlightFromList: (flight) =>
+			dispatch(actions.toggleIsUpdatingFlightFromList(flight)),
+		// CLIENTS
+		toggleAddClient: () => dispatch(actions.toggleIsCreatingClient()),
 		toggleIsDeletingClient: () => dispatch(actions.toggleIsDeletingClient()),
 		toggleIsUpdatingClient: (currClient) =>
 			dispatch(actions.toggleIsUpdatingClient(currClient)),
+		createClient: (fd) => dispatch(actions.createClientInit(fd)),
+		toggleClientDetails: () => dispatch(actions.toggleClientDetails()),
+		deleteClient: (clientId) => dispatch(actions.deleteClientInit(clientId)),
 	};
 };
 

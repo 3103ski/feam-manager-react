@@ -80,9 +80,6 @@ class AddClientForm extends React.Component {
 	render() {
 		const clientData = this.props.currClient ? this.props.currClient : null;
 		const edit = this.props.isEditing;
-		const cancelBtnFunction = edit
-			? 'toggleIsUpdatingClient'
-			: 'toggleAddClient';
 
 		return (
 			<form onSubmit={this.handleFormSubmit} className='form'>
@@ -117,7 +114,9 @@ class AddClientForm extends React.Component {
 					inputPlaceholder='Address'
 					inputName='address'></Input>
 				<div className={s.ButtonRow}>
-					<Button client={clientData} btnFunction={cancelBtnFunction}>
+					<Button
+						client={clientData}
+						btnFunction={edit ? 'toggleIsUpdatingClient' : 'toggleAddClient'}>
 						CANCEL
 					</Button>
 					<Button btnType='submit' specialClass='GreenBtn'>

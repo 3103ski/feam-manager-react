@@ -88,6 +88,20 @@ export const checkValidity = (value, rules) => {
 };
 
 // *********************************************************
+// ***** { formatTime }                  ****************
+// *********************************************************
+
+export const formatTime = (inputDate) => {
+	const date = new Date(inputDate);
+	let hour = date.getHours();
+	let min = date.getMinutes();
+	hour = hour > 0 && hour < 10 ? '0' + hour : hour;
+	hour = hour === 0 ? 12 : hour;
+	min = min < 10 ? '0' + min : min;
+	return `${hour}:${min}`;
+};
+
+// *********************************************************
 // ***** { monthStrToNum }                  ****************
 // *********************************************************
 

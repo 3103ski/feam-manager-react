@@ -50,7 +50,7 @@ const clientReducer = (state = initialState, action) => {
 			});
 
 		// ----------------
-		//  CREATING
+		//   CREATING
 		// ----------------
 
 		case actionTypes.TOGGLE_IS_CREATING_CLIENT:

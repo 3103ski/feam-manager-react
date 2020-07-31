@@ -52,8 +52,10 @@ class App extends React.Component {
 		}
 
 		// POSTING FORMS
-		if (this.props.isBookingFlight) {
-			modalContent = <FlightForm></FlightForm>;
+		if (this.props.isBookingFlight || this.props.isUpdatingFlight) {
+			modalContent = (
+				<FlightForm isEditing={this.props.isUpdatingFlight}></FlightForm>
+			);
 			isModal = true;
 		}
 
@@ -100,7 +102,7 @@ const mapStateToProps = (state) => {
 		// FLIGHTS
 		isBookingFlight: state.flights.isBookingFlight,
 		isViewingFlightInfo: state.flights.isViewingFlightInfo,
-		flightModal: state.flights.modal,
+		isUpdatingFlight: state.flights.isUpdatingFlightInfo,
 		// CLIENTS
 		isViewingClientInfo: state.clients.isViewingClientInfo,
 		clientModal: state.clients.modal,

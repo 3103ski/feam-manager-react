@@ -46,7 +46,7 @@ export const fetchFlightsError = (errorStatus, errorMsg) => {
 };
 
 // =====================================
-//      MODALS
+//      CREATE
 // =====================================
 
 export const toggleIsBookingFlight = () => {
@@ -54,6 +54,97 @@ export const toggleIsBookingFlight = () => {
 		type: actionTypes.TOGGLE_IS_BOOKING_FLIGHT,
 	};
 };
+
+export const createFlightInit = (newFlight) => {
+	return (dispatch) => {
+		dispatch(createFlightStart());
+		a.post('http://127.0.0.1:8000/api/flights/', newFlight)
+			.then((res) => {
+				console.log(res);
+				dispatch(createFlightSuccess(res));
+				dispatch(fetchFlightsInit());
+			})
+			.catch((err) => {
+				dispatch(createFlightError(err));
+				console.log('we threw this: ', err);
+			});
+	};
+};
+
+export const createFlightStart = () => {
+	return {
+		type: actionTypes.CREATE_FLIGHT_START,
+	};
+};
+
+export const createFlightSuccess = (response) => {
+	return {
+		type: actionTypes.CREATE_FLIGHT_SUCCESS,
+		status: response.status,
+		successMsg: response.statusText,
+	};
+};
+
+export const createFlightError = (response) => {
+	return {
+		type: actionTypes.CREATE_FLIGHT_ERROR,
+		status: response.status,
+		errorMsg: response.statusText,
+	};
+};
+
+// =====================================
+//      UPDATING
+// =====================================
+
+export const toggleIsUpdatingFlightFromList = (flight) => {
+	return {
+		type: actionTypes.TOGGLE_IS_UPDATING_FLIGHT_FROM_LIST,
+		flight: flight,
+	};
+};
+
+export const updateFlightInit = (updatedFlight, flightID) => {
+	let updateURL = `http://127.0.0.1:8000/api/flights/${flightID}/`;
+	return (dispatch) => {
+		dispatch(updateFlightStart());
+		a.put(updateURL, updatedFlight)
+			.then((response) => {
+				dispatch(updateFlightSuccess(response));
+				dispatch(fetchFlightsInit());
+			})
+			.catch((error) => {
+				dispatch(updateFlightError(error));
+			});
+	};
+};
+
+export const updateFlightStart = () => {
+	return {
+		type: actionTypes.UPDATE_FLIGHT_START,
+	};
+};
+
+export const updateFlightSuccess = (response) => {
+	return {
+		type: actionTypes.UPDATE_FLIGHT_SUCCESS,
+		status: response.status,
+		successMsg: response.statusText,
+		updatedFlight: response.data,
+	};
+};
+
+export const updateFlightError = (response) => {
+	return {
+		type: actionTypes.UPDATE_FLIGHT_ERROR,
+		status: response.status,
+		errorMsg: response.statusText,
+	};
+};
+
+// =====================================
+//      MODALS
+// =====================================
 
 export const toggleFlightDetails = (flightInfo) => {
 	return {

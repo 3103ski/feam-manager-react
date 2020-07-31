@@ -100,14 +100,11 @@ export const toggleIsUpdatingClient = (client) => {
 };
 
 export const updateClientInit = (updatedClient, clientID) => {
-	console.log('this is updated client info: ', updatedClient);
-	console.log('this should be the id: ', clientID);
 	let updateURL = `http://127.0.0.1:8000/api/clients/${clientID}/`;
 	return (dispatch) => {
 		dispatch(updateClientStart());
 		a.put(updateURL, updatedClient)
 			.then((response) => {
-				console.log(response);
 				dispatch(updateClientSuccess(response));
 				dispatch(fetchClientsInit());
 			})
