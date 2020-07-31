@@ -35,6 +35,9 @@ export const statusColor = (status) => {
 };
 
 // *********************************************************
+// ***** { formatTime }                      *****************
+// *********************************************************
+// *********************************************************
 // ***** { randomId }                      *****************
 // *********************************************************
 
@@ -99,6 +102,14 @@ export const formatTime = (inputDate) => {
 	hour = hour === 0 ? 12 : hour;
 	min = min < 10 ? '0' + min : min;
 	return `${hour}:${min}`;
+};
+
+export const formatDate = (inputDate, spellMonth) => {
+	const date = new Date(inputDate);
+	let month = date.getMonth();
+	let day = date.getDay();
+	let year = date.getFullYear();
+	return `${month}/${day}/${year}`;
 };
 
 // *********************************************************

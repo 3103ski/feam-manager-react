@@ -5,13 +5,11 @@ import * as actions from '../../store/actions/index';
 // STYLES
 import s from './BookFlightForm.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
-import 'rc-time-picker/assets/index.css';
 // LOCAL COMPONENTS
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 // THIRD PARTY COMPONENTS
 import DatePicker from 'react-datepicker';
-// import TimePicker from 'rc-time-picker';
 
 class BookFlightForm extends React.Component {
 	constructor(props) {

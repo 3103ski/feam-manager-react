@@ -1,0 +1,18 @@
+.FieldDetail {
+	// margin-bottom: 8px;
+	h3 {
+		margin: 0;
+	}
+	p {
+		margin: 0 0 5px 0;
+	}
+}
+
+.SideLabel {
+	display: flex;
+	align-items: baseline;
+	margin-bottom: 8px;
+	p {
+		margin: 3px 0 0 10px;
+	}
+}

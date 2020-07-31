@@ -1,14 +1,62 @@
-.FullInfoContainer {
-	width: 90%;
-	margin: 0 auto;
+.DetailsContainer {
 	display: flex;
 	flex-direction: column;
-	.DetailSection {
-		background-color: white;
-		margin: 24px 0;
-		padding: 15px 35px;
-		border-radius: 10px;
-		border-bottom: solid 1px rgba(25, 11, 11, 0.22);
-		box-shadow: 1px 1px 4px rgba(128, 128, 128, 0.41);
+	position: relative;
+
+	h1 {
+		margin: 0 0 0px 0;
+	}
+	.Schedule {
+		margin: 0 auto;
+		width: 100%;
+		.FlightNumberAndDate {
+			display: flex;
+			h1 {
+				margin: 0 auto;
+			}
+		}
+		.Times {
+			display: flex;
+			.Time {
+				border: solid 1px rgba(128, 128, 128, 0.578);
+				border-radius: 5px;
+				margin: 10px;
+				width: 30%;
+				padding: 10px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.Scheduled {
+				border-color: rgb(255, 190, 0);
+			}
+			.Estimated {
+				border-color: rgb(89, 89, 195);
+			}
+			.Actual {
+				border-color: rgb(40, 176, 40);
+			}
+		}
+	}
+	.InfoRow {
+		display: flex;
+		flex-direction: row;
+
+		.DetailSection {
+			background-color: white;
+			width: 350px;
+			.DetailsContainer {
+				height: 150px;
+				overflow: scroll;
+				.FieldDetail {
+					margin-bottom: 8px !important;
+				}
+			}
+			margin: 15px;
+			padding: 15px 35px;
+			border-radius: 10px;
+			border-bottom: solid 1px rgba(25, 11, 11, 0.22);
+			box-shadow: 1px 1px 4px rgba(128, 128, 128, 0.41);
+		}
 	}
 }
