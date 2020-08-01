@@ -46,6 +46,57 @@ export const fetchFlightsError = (errorStatus, errorMsg) => {
 };
 
 // =====================================
+//      DELETE
+// =====================================
+
+// =====================================
+//      DELETING
+// =====================================
+
+export const toggleIsDeletingFlight = () => {
+	return {
+		type: actionTypes.TOGGLE_IS_DELETING_FLIGHT,
+	};
+};
+
+export const deleteFlightInit = (flightId) => {
+	let deleteURL = `http://127.0.0.1:8000/api/flights/${flightId}`;
+	return (dispatch) => {
+		dispatch(deleteFlightStart());
+		a.delete(deleteURL)
+			.then((res) => {
+				dispatch(deleteFlightSuccess(res));
+				dispatch(fetchFlightsInit());
+			})
+			.catch((err) => {
+				dispatch(deleteFlightError(err));
+			});
+	};
+};
+
+export const deleteFlightStart = () => {
+	return {
+		type: actionTypes.DELETE_FLIGHT_START,
+	};
+};
+
+export const deleteFlightSuccess = (response) => {
+	return {
+		type: actionTypes.DELETE_FLIGHT_SUCCESS,
+		status: response.status,
+		errorMsg: response.statusText,
+	};
+};
+
+export const deleteFlightError = (response) => {
+	return {
+		type: actionTypes.DELETE_FLIGHT_ERROR,
+		status: response.status,
+		errorMsg: response.statusText,
+	};
+};
+
+// =====================================
 //      CREATE
 // =====================================
 

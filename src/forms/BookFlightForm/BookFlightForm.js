@@ -194,6 +194,12 @@ class BookFlightForm extends React.Component {
 					showTimeSelect
 					dateFormat='yyyy-MM-dd hh:mm'
 				/>
+				{/* <Input
+					inputPlaceholder='Service Duration'
+					inputType='text'
+					inputName='serviceDuration'
+					inputValue={this.state.serviceDuration}
+					inputOnChange={this.handleServiceDurationOnChange}></Input> */}
 			</div>
 		) : null;
 
@@ -234,12 +240,7 @@ class BookFlightForm extends React.Component {
 					inputName='routing'
 					inputValue={this.state.routing}
 					inputOnChange={this.handleRoutingChange}></Input>
-				<Input
-					inputPlaceholder='Service Duration'
-					inputType='text'
-					inputName='serviceDuration'
-					inputValue={this.state.serviceDuration}
-					inputOnChange={this.handleServiceDurationOnChange}></Input>
+
 				<Input
 					inputPlaceholder='Remarks'
 					inputName='remarks'

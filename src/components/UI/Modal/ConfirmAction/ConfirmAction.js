@@ -18,6 +18,14 @@ const ConfirmAction = (props) => {
 			confBtnText = 'DELETE CLIENT';
 			confirmBtnClass = 'RedBtn';
 			break;
+		case 'deleteFlight':
+			confMsg =
+				'Are you sure you want to delete this flight? You can not undo this action.';
+			confBtnFunction = 'deleteFlight';
+			cancelBtnFunction = 'toggleIsDeletingFlight';
+			confBtnText = 'DELETE FLIGHT';
+			confirmBtnClass = 'RedBtn';
+			break;
 		default:
 			break;
 	}

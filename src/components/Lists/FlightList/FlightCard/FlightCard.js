@@ -27,17 +27,17 @@ class FlightCard extends React.Component {
 			actualTOD,
 		] = [
 			this.props.flightNumber ? this.props.flightNumber : '----',
-			this.props.parking ? this.props.parking : '----',
-			this.props.routing ? this.props.routing : '----',
+			this.props.parking ? this.props.parking : 'pending',
+			this.props.routing ? this.props.routing : 'pending',
 			this.props.flightCoordinator
 				? this.props.flightCoordinator
 				: 'Not Scheduled',
-			this.props.scheduledTOA ? formatTime(this.props.scheduledTOA) : '----',
-			this.props.scheduledTOD ? formatTime(this.props.scheduledTOD) : '----',
-			this.props.estimatedTOA ? formatTime(this.props.estimatedTOA) : '----',
-			this.props.estimatedTOD ? formatTime(this.props.estimatedTOD) : '----',
-			this.props.actualTOA ? formatTime(this.props.actualTOA) : '----',
-			this.props.actualTOD ? formatTime(this.props.actualTOD) : '----',
+			this.props.scheduledTOA ? formatTime(this.props.scheduledTOA) : 'pending',
+			this.props.scheduledTOD ? formatTime(this.props.scheduledTOD) : 'pending',
+			this.props.estimatedTOA ? formatTime(this.props.estimatedTOA) : 'pending',
+			this.props.estimatedTOD ? formatTime(this.props.estimatedTOD) : 'pending',
+			this.props.actualTOA ? formatTime(this.props.actualTOA) : 'pending',
+			this.props.actualTOD ? formatTime(this.props.actualTOD) : 'pending',
 		];
 		return (
 			<div className={s.FlightCardContainer}>

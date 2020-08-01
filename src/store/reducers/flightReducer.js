@@ -6,6 +6,7 @@ const initialState = {
 	isBookingFlight: false,
 	isViewingFlightInfo: false,
 	isUpdatingFlightInfo: false,
+	idDeletingFlight: false,
 	shouldCancelToDetails: false,
 	// Loading
 	isLoadingFlights: false,
@@ -82,7 +83,46 @@ const flightReducer = (state = initialState, action) => {
 				serverStatus: action.status,
 				errorStatusText: action.errorMsg,
 				hasError: true,
-				isAddingClient: false,
+				isAddingFlight: false,
+			});
+
+		// ----------------
+		//  DELETING
+		// ----------------
+
+		case actionTypes.TOGGLE_IS_DELETING_FLIGHT:
+			if (!state.isDeletingFlight) {
+				return updateObject(state, {
+					isDeletingFlight: true,
+				});
+			} else {
+				return updateObject(state, {
+					isDeletingFlight: false,
+				});
+			}
+
+		case actionTypes.DELETE_FLIGHT_START:
+			return updateObject(state, {
+				isMakingRequest: true,
+			});
+
+		case actionTypes.DELETE_FLIGHT_SUCCESS:
+			return updateObject(state, {
+				isMakingRequest: false,
+				isDeletingFlight: false,
+				isViewingFlightInfo: false,
+				serverStatus: action.status,
+				successStatusText: action.successMsg,
+				currFlight: null,
+			});
+
+		case actionTypes.DELETE_FLIGHT_ERROR:
+			return updateObject(state, {
+				hasError: true,
+				isMakingRequest: false,
+				isDeletingFlight: false,
+				serverStatus: action.status,
+				errorStatusText: action.errorMsg,
 			});
 
 		// ----------------

@@ -70,6 +70,8 @@ class App extends React.Component {
 
 		if (this.props.isDeletingClient) {
 			modalContent = <ConfirmAction confirmType='deleteClient'></ConfirmAction>;
+		} else if (this.props.isDeletingFlight) {
+			modalContent = <ConfirmAction confirmType='deleteFlight'></ConfirmAction>;
 		}
 
 		return (
@@ -103,13 +105,12 @@ const mapStateToProps = (state) => {
 		isBookingFlight: state.flights.isBookingFlight,
 		isViewingFlightInfo: state.flights.isViewingFlightInfo,
 		isUpdatingFlight: state.flights.isUpdatingFlightInfo,
+		isDeletingFlight: state.flights.isDeletingFlight,
 		// CLIENTS
 		isViewingClientInfo: state.clients.isViewingClientInfo,
-		clientModal: state.clients.modal,
 		isAddingClient: state.clients.isAddingClient,
 		isDeletingClient: state.clients.isDeletingClient,
 		isEditingClient: state.clients.isEditingClient,
-		currClient: state.clients.currClient,
 	};
 };
 

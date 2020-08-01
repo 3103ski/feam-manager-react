@@ -5,17 +5,19 @@ export {
 	toggleIsBookingFlight,
 	toggleIsUpdatingFlightFromList,
 	toggleIsUpdatingFlightFromDetails,
+	toggleIsDeletingFlight,
 	toggleFlightDetails,
 	updateFlightInit,
+	deleteFlightInit,
 	createFlightInit,
 } from './flightsReducer.js';
 
 export {
 	fetchClientsInit,
-	toggleClientDetails,
 	toggleIsCreatingClient,
 	toggleIsDeletingClient,
 	toggleIsUpdatingClient,
+	toggleClientDetails,
 	createClientInit,
 	deleteClientInit,
 	updateClientInit,

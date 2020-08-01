@@ -116,6 +116,9 @@ const FullFlightInfo = (props) => {
 				btnFunction='toggleIsUpdatingFlightFromDetails'>
 				UPDATE DETAILS
 			</Button>
+			<Button specialClass='RedBtn' btnFunction='toggleIsDeletingFlight'>
+				DELETE FLIGHT
+			</Button>
 		</div>
 	);
 };

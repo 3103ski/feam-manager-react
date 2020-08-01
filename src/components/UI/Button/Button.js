@@ -81,6 +81,14 @@ const Button = (props) => {
 			flight = props.currFlight;
 			btnFunction = () => props.toggleIsUpdatingFlightFromDetails(flight);
 			break;
+		case 'toggleIsDeletingFlight':
+			flight = props.currFlight;
+			btnFunction = () => props.toggleIsDeletingFlight();
+			break;
+		case 'deleteFlight':
+			const flightId = props.currFlight.id;
+			btnFunction = () => props.deleteFlight(flightId);
+			break;
 		// ------------------
 		//   APP FUNCTIONS
 		case 'modalClose':
@@ -116,6 +124,8 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(actions.toggleIsUpdatingFlightFromList(flight)),
 		toggleIsUpdatingFlightFromDetails: (flight) =>
 			dispatch(actions.toggleIsUpdatingFlightFromDetails(flight)),
+		toggleIsDeletingFlight: () => dispatch(actions.toggleIsDeletingFlight()),
+		deleteFlight: (flightId) => dispatch(actions.deleteFlightInit(flightId)),
 		// CLIENTS
 		toggleAddClient: () => dispatch(actions.toggleIsCreatingClient()),
 		toggleIsDeletingClient: () => dispatch(actions.toggleIsDeletingClient()),
