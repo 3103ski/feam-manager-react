@@ -104,6 +104,13 @@ export const toggleIsUpdatingFlightFromList = (flight) => {
 	};
 };
 
+export const toggleIsUpdatingFlightFromDetails = (flight) => {
+	return {
+		type: actionTypes.TOGGLE_IS_UPDATING_FLIGHT_FROM_DETAILS,
+		flight: flight,
+	};
+};
+
 export const updateFlightInit = (updatedFlight, flightID) => {
 	let updateURL = `http://127.0.0.1:8000/api/flights/${flightID}/`;
 	return (dispatch) => {

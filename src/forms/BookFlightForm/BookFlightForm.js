@@ -16,51 +16,57 @@ class BookFlightForm extends React.Component {
 		super(props);
 		this.state = {
 			// DATE / TIME FIELDS
-			scheduledTOA: this.props.isEditing
+			scheduledTOA: this.props.isUpdatingFlight
 				? new Date(this.props.currFlight.scheduledTOA)
 				: new Date(),
-			scheduledTOD: this.props.isEditing
+			scheduledTOD: this.props.isUpdatingFlight
 				? new Date(this.props.currFlight.scheduledTOD)
 				: new Date(),
 			estimatedTOA:
-				this.props.isEditing && this.props.currFlight.estimatedTOA !== null
+				this.props.isUpdatingFlight &&
+				this.props.currFlight.estimatedTOA !== null
 					? new Date(this.props.currFlight.estimatedTOA)
 					: null,
 			estimatedTOD:
-				this.props.isEditing && this.props.currFlight.estimatedTOD !== null
+				this.props.isUpdatingFlight &&
+				this.props.currFlight.estimatedTOD !== null
 					? new Date(this.props.currFlight.estimatedTOD)
 					: null,
 			actualTOA:
-				this.props.isEditing && this.props.currFlight.actualTOA !== null
+				this.props.isUpdatingFlight && this.props.currFlight.actualTOA !== null
 					? new Date(this.props.currFlight.actualTOA)
 					: null,
 			actualTOD:
-				this.props.isEditing && this.props.currFlight.actualTOD !== null
+				this.props.isUpdatingFlight && this.props.currFlight.actualTOD !== null
 					? new Date(this.props.currFlight.actualTOD)
 					: null,
-			serviceDuration: this.props.isEditing
+			serviceDuration: this.props.isUpdatingFlight
 				? this.props.currFlight.serviceDuration
 				: '',
 			// CLIENT / STAFF OBJECTS
-			client: this.props.isEditing ? this.props.currFlight.client : null,
-			lavService: this.props.isEditing
+			client: this.props.isUpdatingFlight ? this.props.currFlight.client : null,
+			lavService: this.props.isUpdatingFlight
 				? this.props.currFlight.lavService
 				: null,
-			createdBy: this.props.isEditing ? this.props.currFlight.createdBy : null,
-			flightCoordinator: this.props.isEditing
+			createdBy: this.props.isUpdatingFlight
+				? this.props.currFlight.createdBy
+				: null,
+			flightCoordinator: this.props.isUpdatingFlight
 				? this.props.currFlight.flightCoordinator
 				: null,
-			traffiCoordinator: this.props.isEditing
+			traffiCoordinator: this.props.isUpdatingFlight
 				? this.props.currFlight.traffiCoordinator
 				: null,
 			// DETAILS
-			flightNumber: this.props.isEditing
+			flightNumber: this.props.isUpdatingFlight
 				? this.props.currFlight.flightNumber
 				: '',
-			parking: this.props.isEditing ? this.props.currFlight.parking : '',
-			routing: this.props.isEditing ? this.props.currFlight.routing : '',
-			remarks: this.props.isEditing ? this.props.currFlight.remarks : '',
-			tailNumber: this.props.isEditing ? this.props.currFlight.tailNumber : '',
+			parking: this.props.isUpdatingFlight ? this.props.currFlight.parking : '',
+			routing: this.props.isUpdatingFlight ? this.props.currFlight.routing : '',
+			remarks: this.props.isUpdatingFlight ? this.props.currFlight.remarks : '',
+			tailNumber: this.props.isUpdatingFlight
+				? this.props.currFlight.tailNumber
+				: '',
 		};
 	}
 
@@ -147,7 +153,7 @@ class BookFlightForm extends React.Component {
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		const data = this.state;
-		if (this.props.isEditing) {
+		if (this.props.isUpdatingFlight) {
 			const id = this.props.currFlight.id;
 			this.props.putFlight(data, id);
 		} else {
@@ -156,7 +162,7 @@ class BookFlightForm extends React.Component {
 	};
 
 	render() {
-		let updateTimeInputs = this.props.isEditing ? (
+		let updateTimeInputs = this.props.isUpdatingFlight ? (
 			<div>
 				<p>Select An ESTIMATED TIME OF ARRIVAL </p>
 				<DatePicker
@@ -190,6 +196,18 @@ class BookFlightForm extends React.Component {
 				/>
 			</div>
 		) : null;
+
+		let cancelBtnFunction;
+		if (this.props.isViewingFlightInfo && !this.props.isBookingFlight) {
+			cancelBtnFunction = 'toggleFlightDetails';
+		} else if (this.props.isBookingFlight && !this.props.isViewingFlightInfo) {
+			cancelBtnFunction = 'toggleIsBookingFlight';
+		} else if (this.props.shouldCancelToDetails) {
+			cancelBtnFunction = 'toggleIsUpdatingFlightFromDetails';
+		} else if (!this.props.shouldCancelToDetails) {
+			cancelBtnFunction = 'toggleIsUpdatingFlightFromList';
+		}
+
 		return (
 			<form onSubmit={this.handleFormSubmit} className='form'>
 				<Input
@@ -246,16 +264,9 @@ class BookFlightForm extends React.Component {
 				/>
 				{updateTimeInputs}
 				<div className={s.ButtonRow}>
-					<Button
-						btnFunction={
-							!this.props.isEditing
-								? 'toggleAddFlight'
-								: 'toggleIsUpdatingFlightFromList'
-						}>
-						CANCEL
-					</Button>
+					<Button btnFunction={cancelBtnFunction}>CANCEL</Button>
 					<Button btnType='submit' specialClass='GreenBtn'>
-						{this.props.isEditing ? 'UPDATE FLIGHT' : 'BOOK FLIGHT'}
+						{this.props.isUpdatingFlight ? 'UPDATE FLIGHT' : 'BOOK FLIGHT'}
 					</Button>
 				</div>
 			</form>
@@ -266,7 +277,10 @@ class BookFlightForm extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		currFlight: state.flights.currFlight,
-		isEditing: state.flights.isUpdatingFlightInfo,
+		isUpdatingFlight: state.flights.isUpdatingFlightInfo,
+		isViewingFlightInfo: state.flights.isViewingFlightInfo,
+		isBookingFlight: state.flights.isBookingFlight,
+		shouldCancelToDetails: state.flights.shouldCancelToDetails,
 	};
 };
 

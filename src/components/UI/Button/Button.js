@@ -66,7 +66,7 @@ const Button = (props) => {
 			break;
 		// -----------
 		//   FLIGHTS
-		case 'toggleAddFlight':
+		case 'toggleIsBookingFlight':
 			btnFunction = props.toggleIsBookingFlight;
 			break;
 		case 'toggleFlightDetails':
@@ -76,6 +76,10 @@ const Button = (props) => {
 		case 'toggleIsUpdatingFlightFromList':
 			flight = props.flight;
 			btnFunction = () => props.toggleIsUpdatingFlightFromList(flight);
+			break;
+		case 'toggleIsUpdatingFlightFromDetails':
+			flight = props.currFlight;
+			btnFunction = () => props.toggleIsUpdatingFlightFromDetails(flight);
 			break;
 		// ------------------
 		//   APP FUNCTIONS
@@ -110,6 +114,8 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(actions.toggleFlightDetails(flight)),
 		toggleIsUpdatingFlightFromList: (flight) =>
 			dispatch(actions.toggleIsUpdatingFlightFromList(flight)),
+		toggleIsUpdatingFlightFromDetails: (flight) =>
+			dispatch(actions.toggleIsUpdatingFlightFromDetails(flight)),
 		// CLIENTS
 		toggleAddClient: () => dispatch(actions.toggleIsCreatingClient()),
 		toggleIsDeletingClient: () => dispatch(actions.toggleIsDeletingClient()),

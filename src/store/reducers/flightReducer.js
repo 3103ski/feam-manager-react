@@ -6,6 +6,7 @@ const initialState = {
 	isBookingFlight: false,
 	isViewingFlightInfo: false,
 	isUpdatingFlightInfo: false,
+	shouldCancelToDetails: false,
 	// Loading
 	isLoadingFlights: false,
 	flightsLoaded: false,
@@ -98,6 +99,23 @@ const flightReducer = (state = initialState, action) => {
 				return updateObject(state, {
 					isUpdatingFlightInfo: false,
 					currFlight: null,
+				});
+			}
+
+		case actionTypes.TOGGLE_IS_UPDATING_FLIGHT_FROM_DETAILS:
+			if (!state.isUpdatingFlightInfo) {
+				return updateObject(state, {
+					isUpdatingFlightInfo: true,
+					shouldCancelToDetails: true,
+					isViewingFlightInfo: false,
+					currFlight: action.flight,
+				});
+			} else {
+				return updateObject(state, {
+					isUpdatingFlightInfo: false,
+					shouldCancelToDetails: false,
+					isViewingFlightInfo: true,
+					currFlight: action.flight,
 				});
 			}
 

@@ -4,6 +4,7 @@ export {
 	fetchFlightsInit,
 	toggleIsBookingFlight,
 	toggleIsUpdatingFlightFromList,
+	toggleIsUpdatingFlightFromDetails,
 	toggleFlightDetails,
 	updateFlightInit,
 	createFlightInit,

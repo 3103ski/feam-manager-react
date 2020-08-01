@@ -9,7 +9,7 @@ const ListToolbar = (props) => {
 	let btnFunction, btnText;
 	switch (props.listType) {
 		case 'flights':
-			btnFunction = 'toggleAddFlight';
+			btnFunction = 'toggleIsBookingFlight';
 			btnText = 'BOOK NEW FLIGHT';
 			break;
 		case 'clients':

@@ -102,7 +102,20 @@ const FullFlightInfo = (props) => {
 	return (
 		<div className={s.FullInfoContainer}>
 			{details}
-			<Button btnFunction='toggleFlightDetails'>CLOSE DETAILS</Button>
+			<Button
+				btnFunction={
+					props.isViewingInfo
+						? 'toggleFlightDetails'
+						: 'toggleIsUpdatingFlightFromDetails'
+				}>
+				CLOSE DETAILS
+			</Button>
+			<Button
+				specialClass='GreenBtn'
+				flight={f}
+				btnFunction='toggleIsUpdatingFlightFromDetails'>
+				UPDATE DETAILS
+			</Button>
 		</div>
 	);
 };
@@ -110,6 +123,7 @@ const FullFlightInfo = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		currFlight: state.flights.currFlight,
+		isViewingInfo: state.flights.isViewingFlightInfo,
 	};
 };
 
