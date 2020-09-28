@@ -10,20 +10,15 @@ import iconPhone from '../../../../assets/icon_phone.png';
 
 const ClientListItem = (props) => {
 	const c = props.client;
+
 	return (
-		<div
-			onClick={() => props.toggleClientDetails(c)}
-			className={s.ClientListItem}>
+		<div onClick={() => props.toggleClientDetails(c)} className={s.ClientListItem}>
 			<h3 className={s.name}>{c.name}</h3>
 			<div className={s.contact}>
 				<img src={iconPhone} alt='editIcon' />
 				<p>{c.contactNumber}</p>
 			</div>
-			<img
-				onClick={() => props.toggleIsUpdatingClient(c)}
-				src={iconEdit}
-				alt='editIcon'
-			/>
+			<img onClick={() => props.toggleIsUpdatingClient(c)} src={iconEdit} alt='editIcon' />
 		</div>
 	);
 };
@@ -36,10 +31,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		toggleClientDetails: (client) =>
-			dispatch(actions.toggleClientDetails(client)),
-		toggleIsUpdatingClient: (client) =>
-			dispatch(actions.toggleIsUpdatingClient(client)),
+		toggleClientDetails: (client) => dispatch(actions.toggleClientDetails(client)),
+		toggleIsUpdatingClient: (client) => dispatch(actions.toggleIsUpdatingClient(client)),
 	};
 };
 

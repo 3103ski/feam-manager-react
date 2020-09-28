@@ -15,21 +15,24 @@ class FlightList extends React.Component {
 
 		if (!this.props.isLoadingFlights) {
 			flights = this.props.flightList ? (
-				this.props.flightList.map((flight, index) => (
-					<FlightCard
-						key={index}
-						flight={flight}
-						flightNumber={flight.flightNumber}
-						parking={flight.parking}
-						routing={flight.routing}
-						flightCoordinator={flight.flightCoordinator}
-						scheduledTOA={flight.scheduledTOA}
-						scheduledTOD={flight.scheduledTOD}
-						estimatedTOA={flight.estimatedTOA}
-						estimatedTOD={flight.estimatedTOD}
-						actualTOA={flight.actualTOA}
-						actualTOD={flight.actualTOD}></FlightCard>
-				))
+				this.props.flightList.map((flight, index) => {
+					console.log(flight);
+					return (
+						<FlightCard
+							key={index}
+							flight={flight}
+							flightNumber={flight.flightNumber}
+							parking={flight.parking}
+							routing={flight.routing}
+							flightCoordinator={flight.flightCoordinator}
+							scheduledTOA={flight.scheduledTOA}
+							scheduledTOD={flight.scheduledTOD}
+							estimatedTOA={flight.estimatedTOA}
+							estimatedTOD={flight.estimatedTOD}
+							actualTOA={flight.actualTOA}
+							actualTOD={flight.actualTOD}></FlightCard>
+					);
+				})
 			) : (
 				<h1>False Load</h1>
 			);

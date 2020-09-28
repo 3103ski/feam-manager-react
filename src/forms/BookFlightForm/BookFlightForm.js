@@ -73,6 +73,13 @@ class BookFlightForm extends React.Component {
 	//----------------------
 	// DETAILS
 	//----------------------
+
+	handleClientChange = (event) => {
+		this.setState({
+			client: event.target.value,
+		});
+	};
+
 	handleFlightNumberChange = (event) => {
 		this.setState({
 			flightNumber: event.target.value,
@@ -216,6 +223,12 @@ class BookFlightForm extends React.Component {
 
 		return (
 			<form onSubmit={this.handleFormSubmit} className='form'>
+				<Input
+					inputPlaceholder='Client'
+					inputType='text'
+					inputName='client'
+					inputValue={this.state.client}
+					inputOnChange={this.handleClientChange}></Input>
 				<Input
 					inputPlaceholder='Flight #'
 					inputType='text'
